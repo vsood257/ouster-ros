@@ -130,7 +130,7 @@ class PointCloudProcessorFactory {
 
    public:
     static bool point_type_requires_intensity(const std::string& point_type) {
-        return point_type == "xyzi" || point_type == "xyzir" ||
+        return point_type == "xyzi" || point_type == "xyzir" || point_type == "xyzit" ||
                point_type == "original" || point_type == "o_xyzi";
     }
 
@@ -201,6 +201,11 @@ class PointCloudProcessorFactory {
                 info, frame, apply_lidar_to_sensor_transform,
                 organized, destagger, min_range, max_range, rows_step,
                 mask_path, post_processing_fn);
+        } else if (point_type == "xyzit") {
+            return make_point_cloud_processor<PointXYZIT>(
+                info, frame, apply_lidar_to_sensor_transform,
+                organized, destagger, min_range, max_range, rows_step,
+                mask_path, post_processing_fn); 
         } else if (point_type == "original") {
             return make_point_cloud_processor<ouster_ros::Point>(
                 info, frame, apply_lidar_to_sensor_transform,
