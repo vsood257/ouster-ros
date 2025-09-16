@@ -140,7 +140,7 @@ void scan_to_cloud_f(ouster_ros::Cloud<PointT>& cloud, PointS& staging_point,
             // as opposed to the point cloud destaggering if it is disabled
             // then timestamps needs to be staggered.
             auto ts_idx =
-                destagger ? v : (v + ls.w + pixel_shift_by_row[u]) % ls.w;
+                destagger ? (v + ls.w + pixel_shift_by_row[u]) % ls.w : v;
             auto ts =
                 timestamp[ts_idx] > scan_ts ? timestamp[ts_idx] - scan_ts : 0UL;
 
