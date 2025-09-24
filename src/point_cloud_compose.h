@@ -141,7 +141,7 @@ void scan_to_cloud_f(ouster_ros::Cloud<PointT>& cloud, PointS& staging_point,
             // then timestamps needs to be staggered.
             auto ts_idx =
                 destagger ? v : (v + ls.w + pixel_shift_by_row[u]) % ls.w;
-            auto ts = static_cast<int64_t>(timestamp[ts_idx]) - static_cast<int64_t>(scan_ts);
+            auto ts = static_cast<int64_t>(timestamp[v_shift]) - static_cast<int64_t>(scan_ts);
 
             if (organized) {
                 cloud.is_dense &= xyz.isNaN().any();
