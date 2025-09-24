@@ -46,7 +46,7 @@ static constexpr ChanFieldTable<4> Profile_LEGACY{{
 // auto=LEGACY
 struct EIGEN_ALIGN16 _Point_LEGACY {
     PCL_ADD_POINT4D;
-    uint32_t t;             // timestamp in nanoseconds relative to frame start
+    int32_t t;             // timestamp in nanoseconds relative to frame start
     uint16_t ring;          // equivalent to channel
     uint32_t range;
     uint32_t signal;        // equivalent to intensity
@@ -95,7 +95,7 @@ POINT_CLOUD_REGISTER_POINT_STRUCT(ouster_ros::Point_LEGACY,
     (float, x, x)
     (float, y, y)
     (float, z, z)
-    (std::uint32_t, t, t)
+    (std::int32_t, t, t)
     (std::uint16_t, ring, ring)
     (std::uint32_t, range, range)
     (std::uint32_t, signal, signal)
@@ -133,7 +133,7 @@ static constexpr ChanFieldTable<4> Profile_RNG19_RFL8_SIG16_NIR16_DUAL_2ND_RETUR
 // auto=RNG19_RFL8_SIG16_NIR16_DUAL
 struct EIGEN_ALIGN16 _Point_RNG19_RFL8_SIG16_NIR16_DUAL {
     PCL_ADD_POINT4D;
-    uint32_t t;             // timestamp in nanoseconds relative to frame start
+    int32_t t;             // timestamp in nanoseconds relative to frame start
     uint16_t ring;          // equivalent channel
     uint32_t range;
     uint16_t signal;        // equivalent to intensity
@@ -182,7 +182,7 @@ POINT_CLOUD_REGISTER_POINT_STRUCT(ouster_ros::Point_RNG19_RFL8_SIG16_NIR16_DUAL,
     (float, x, x)
     (float, y, y)
     (float, z, z)
-    (std::uint32_t, t, t)
+    (std::int32_t, t, t)
     (std::uint16_t, ring, ring)
     (std::uint32_t, range, range)
     (std::uint16_t, signal, signal)
@@ -205,7 +205,7 @@ static constexpr ChanFieldTable<4> Profile_RNG19_RFL8_SIG16_NIR16{{
 // auto=RNG19_RFL8_SIG16_NIR16
 struct EIGEN_ALIGN16 _Point_RNG19_RFL8_SIG16_NIR16 {
     PCL_ADD_POINT4D;
-    uint32_t t;             // timestamp in nanoseconds relative to frame start
+    int32_t t;             // timestamp in nanoseconds relative to frame start
     uint16_t ring;          // equivalent channel
     uint32_t range;
     uint16_t signal;        // equivalent to intensity
@@ -254,7 +254,7 @@ POINT_CLOUD_REGISTER_POINT_STRUCT(ouster_ros::Point_RNG19_RFL8_SIG16_NIR16,
     (float, x, x)
     (float, y, y)
     (float, z, z)
-    (std::uint32_t, t, t)
+    (std::int32_t, t, t)
     (std::uint16_t, ring, ring)
     (std::uint32_t, range, range)
     (std::uint16_t, signal, signal)
@@ -277,7 +277,7 @@ static constexpr ChanFieldTable<3> Profile_RNG15_RFL8_NIR8{{
 struct EIGEN_ALIGN16 _Point_RNG15_RFL8_NIR8 {
     PCL_ADD_POINT4D;
     // No signal/intensity in low data mode
-    uint32_t t;             // timestamp in nanoseconds relative to frame start
+    int32_t t;             // timestamp in nanoseconds relative to frame start
     uint16_t ring;          // equivalent to channel
     uint32_t range;
     uint16_t reflectivity;
@@ -326,7 +326,7 @@ POINT_CLOUD_REGISTER_POINT_STRUCT(ouster_ros::Point_RNG15_RFL8_NIR8,
     (float, x, x)
     (float, y, y)
     (float, z, z)
-    (std::uint32_t, t, t)
+    (std::int32_t, t, t)
     (std::uint16_t, ring, ring)
     (std::uint32_t, range, range)
     (std::uint16_t, reflectivity, reflectivity)
@@ -364,7 +364,7 @@ static constexpr ChanFieldTable<3> Profile_FUSA_RNG15_RFL8_NIR8_DUAL_2ND_RETURN 
 // auto=RNG19_RFL8_SIG16_NIR16_DUAL
 struct EIGEN_ALIGN16 _Point_FUSA_RNG15_RFL8_NIR8_DUAL {
     PCL_ADD_POINT4D;
-    uint32_t t;             // timestamp in nanoseconds relative to frame start
+    int32_t t;             // timestamp in nanoseconds relative to frame start
     uint16_t ring;          // equivalent to channel
     uint32_t range;
     uint8_t reflectivity;
@@ -414,7 +414,7 @@ POINT_CLOUD_REGISTER_POINT_STRUCT(ouster_ros::Point_FUSA_RNG15_RFL8_NIR8_DUAL,
     (float, x, x)
     (float, y, y)
     (float, z, z)
-    (std::uint32_t, t, t)
+    (std::int32_t, t, t)
     (std::uint16_t, ring, ring)
     (std::uint32_t, range, range)
     (std::uint8_t, reflectivity, reflectivity)

@@ -22,7 +22,7 @@ namespace ouster_ros {
 struct EIGEN_ALIGN16 _Point {
     PCL_ADD_POINT4D;
     float intensity;        // equivalent to signal
-    uint32_t t;
+    int32_t t;
     uint16_t reflectivity;
     uint16_t ring;          // equivalent to channel
     uint16_t ambient;       // equivalent to near_ir
@@ -78,7 +78,7 @@ POINT_CLOUD_REGISTER_POINT_STRUCT(ouster_ros::Point,
     (float, y, y)
     (float, z, z)
     (float, intensity, intensity)
-    (std::uint32_t, t, t)
+    (std::int32_t, t, t)
     (std::uint16_t, reflectivity, reflectivity)
     (std::uint16_t, ring, ring)
     (std::uint16_t, ambient, ambient)

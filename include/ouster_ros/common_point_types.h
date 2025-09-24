@@ -106,7 +106,7 @@ struct EIGEN_ALIGN16 _PointXYZRefT
 {
   PCL_ADD_POINT4D;
   uint16_t reflectivity;
-  uint32_t t;
+  int32_t t;
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 };
 
@@ -166,7 +166,7 @@ POINT_CLOUD_REGISTER_POINT_STRUCT(ouster_ros::PointXYZRefT,
     (float, y, y)
     (float, z, z)
     (std::uint16_t, reflectivity, reflectivity)
-    (std::uint32_t, t, t)
+    (std::int32_t, t, t)
 )
 
 // clang-format on

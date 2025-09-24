@@ -141,8 +141,7 @@ void scan_to_cloud_f(ouster_ros::Cloud<PointT>& cloud, PointS& staging_point,
             // then timestamps needs to be staggered.
             auto ts_idx =
                 destagger ? v : (v + ls.w + pixel_shift_by_row[u]) % ls.w;
-            auto ts =
-                timestamp[ts_idx] > scan_ts ? timestamp[ts_idx] - scan_ts : 0UL;
+            auto ts = static_cast<int64_t>(timestamp[ts_idx]) - static_cast<int64_t>(scan_ts);
 
             if (organized) {
                 cloud.is_dense &= xyz.isNaN().any();
@@ -166,7 +165,7 @@ void scan_to_cloud_f(ouster_ros::Cloud<PointT>& cloud, PointS& staging_point,
             // values if known before hand that the target point cloud does
             // not have a field to hold the timestamp or a ring for example the
             // case of pcl::PointXYZ or pcl::PointXYZI.
-            pt.t = static_cast<uint32_t>(ts);
+            pt.t = static_cast<int32_t>(ts);
             pt.ring = static_cast<uint16_t>(u);
             copy_lidar_scan_fields_to_point<0>(pt, ls_tuple, src_idx);
             // only perform point transform operation when PointT, and PointS
