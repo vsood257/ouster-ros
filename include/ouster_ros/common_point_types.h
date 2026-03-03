@@ -102,6 +102,45 @@ struct PointXYZIR : public _PointXYZIR {
     }
 };
 
+struct EIGEN_ALIGN16 _PointXYZRefT
+{
+  PCL_ADD_POINT4D;
+  uint16_t reflectivity;
+  uint32_t t;
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+};
+
+struct PointXYZRefT : public _PointXYZRefT
+{
+  inline PointXYZRefT(const _PointXYZRefT& pt)
+  {
+    x = pt.x; y = pt.y; z = pt.z; data[3] = 1.0f;
+    reflectivity = pt.reflectivity; t = pt.t;
+  }
+
+  inline PointXYZRefT()
+  {
+    x = y = z = 0.0f; data[3] = 1.0f;
+    reflectivity = 0; t = 0;
+  }
+
+  inline const auto as_tuple() const
+  {
+    return std::tie(x, y, z, reflectivity, t);
+  }
+
+  inline auto as_tuple()
+  {
+    return std::tie(x, y, z, reflectivity, t);
+  }
+
+  template <size_t I>
+  inline auto& get()
+  {
+    return std::get<I>(as_tuple());
+  }
+};
+
 }   // namespace ouster_ros
 
 // clang-format off
@@ -120,6 +159,14 @@ POINT_CLOUD_REGISTER_POINT_STRUCT(ouster_ros::PointXYZIR,
     (float, z, z)
     (float, intensity, intensity)
     (std::uint16_t, ring, ring)
+)
+
+POINT_CLOUD_REGISTER_POINT_STRUCT(ouster_ros::PointXYZRefT,
+    (float, x, x)
+    (float, y, y)
+    (float, z, z)
+    (std::uint16_t, reflectivity, reflectivity)
+    (std::uint32_t, t, t)
 )
 
 // clang-format on

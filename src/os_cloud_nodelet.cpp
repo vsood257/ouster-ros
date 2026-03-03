@@ -224,6 +224,7 @@ class OusterCloud : public nodelet::Nodelet {
                         for (size_t i = 0; i < msgs.size(); ++i) {
                             if (msgs[i]->header.stamp > last_msg_ts)
                                 last_msg_ts = msgs[i]->header.stamp;
+                            ROS_INFO_THROTTLE(10, "abraun-outrider timestamp reindexing fix");
                             lidar_pubs[i].publish(*msgs[i]);
                         }
                     }));
